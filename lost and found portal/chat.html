@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat - Find It!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+       background: url('chat.bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  form {
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
+
+      font-family: 'Poppins', sans-serif;
+    .navbar {
+      background-color: #007bff;
+    }
+    .navbar-brand, .nav-link {
+      color: white !important;
+    }
+    .chat-container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      height: 70vh;
+    }
+    .chat-box {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    .message {
+      margin-bottom: 12px;
+      max-width: 75%;
+      padding: 10px 14px;
+      border-radius: 15px;
+    }
+    .sent {
+      background-color: #007bff;
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+    .received {
+      background-color: #f1f1f1;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+    .input-box {
+      display: flex;
+      padding: 10px;
+    }
+    .input-box input {
+      flex: 1;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 10px;
+      outline: none;
+    }
+    .input-box button {
+      margin-left: 10px;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><b>Find It!</b></a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="report_lost.html">Report Lost</a></li>
+          <li class="nav-item"><a class="nav-link" href="report_found.html">Report Found</a></li>
+          <li class="nav-item"><a class="nav-link active" href="chat.html">Chat</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="chat-container">
+    <div class="chat-box" id="chatBox">
+
+      <div class="message received">Hi, I think I found your lost wallet.</div>
+      <div class="message sent">Oh really? That’s great! Can you describe it?</div>
+    </div>
+
+    <div class="input-box">
+      <input type="text" id="messageInput" placeholder="Type your message...">
+      <button class="btn btn-primary" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const chatBox = document.getElementById('chatBox');
+      const messageText = input.value.trim();
+
+      if (messageText) {
+        const newMessage = document.createElement('div');
+        newMessage.classList.add('message', 'sent');
+        newMessage.textContent = messageText;
+        chatBox.appendChild(newMessage);
+        input.value = '';
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

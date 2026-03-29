@@ -1,0 +1,11 @@
+<h2>Lost Items</h2>
+<table>
+  {% for i in items %}
+  <tr>
+    <td>{{ i.item_name }}</td>
+    <td>{{ i.description }}</td>
+    <td>{{ i.status }}</td>
+    <td>{{ i.date }}</td>
+  </tr>
+  {% endfor %}
+</table>

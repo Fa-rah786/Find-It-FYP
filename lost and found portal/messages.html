@@ -1,0 +1,9 @@
+<h2>User Messages</h2>
+
+{% for m in inbox %}
+<div class="message-box">
+  <strong>{{ m.sender }}</strong>
+  <p>{{ m.message }}</p>
+  <small>{{ m.date_time }}</small>
+</div>
+{% endfor %}
